@@ -77,7 +77,7 @@ python main.py \
 
 ```bash
 python main.py \
-    --config-name generic_offline/motion_transvae \
+    --config-name generic_offline/motion_diffusion \
     trainer.batch_size=4 \
     trainer.max_seq_len=750 \
     trainer.window_size=8 \
@@ -106,7 +106,7 @@ python main.py \
 
 ```bash
 python main.py \
-    --config-name generic_offline/motion_transvae \
+    --config-name generic_offline/motion_diffusion \
     stage=test \
     data_dir=./datasets/REACT2026/ \
     trainer.batch_size=1 \
@@ -125,9 +125,9 @@ python main.py \
 
 | Metric | Description |
 |--------|-------------|
-| FRC ↑ | Facial Reaction Consistency |
-| FRD ↓ | Facial Reaction Distance (FID-based) |
-| TLCC ↑ | Time-Lagged Cross-Correlation |
-| S_MSE ↓ | Smoothness (MSE of consecutive frames) |
-| FRVar ↑ | Facial Reaction Variance |
-| FRREa ↓ | Facial Reaction Realism (FID on rendered frames) |
+| FRCorr ↑ | Facial Reaction Correlation (CCC against GT) |
+| FRDist ↓ | Facial Reaction Distance (DTW against GT) |
+| FRDiv ↑ | Diversity across the 10 generated predictions (pairwise MSE) |
+| FRVar ↑ | Temporal variance within a generated reaction |
+| FRRea ↓ | Realism (FID on rendered frames) |
+| FRSyn ↓ | Synchrony (Time-Lagged Cross-Correlation) |

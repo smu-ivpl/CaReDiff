@@ -68,12 +68,12 @@ The [MARS dataset](https://sites.google.com/view/react2026/home) must be obtaine
 
 | Metric | Description |
 |--------|-------------|
-| FRC ↑ | Facial Reaction Consistency |
-| FRD ↓ | Facial Reaction Distance (FID-based) |
-| TLCC ↑ | Time-Lagged Cross-Correlation |
-| S_MSE ↓ | Smoothness (MSE of consecutive frames) |
-| FRVar ↑ | Facial Reaction Variance |
-| FRREa ↓ | Facial Reaction Realism (FID on rendered frames) |
+| FRCorr ↑ | Facial Reaction Correlation (CCC against GT) |
+| FRDist ↓ | Facial Reaction Distance (DTW against GT) |
+| FRDiv ↑ | Diversity across the 10 generated predictions (pairwise MSE) |
+| FRVar ↑ | Temporal variance within a generated reaction |
+| FRRea ↓ | Realism (FID on rendered frames) |
+| FRSyn ↓ | Synchrony (Time-Lagged Cross-Correlation) |
 
 ## Citation
 

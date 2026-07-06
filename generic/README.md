@@ -48,9 +48,9 @@ pip install -r code/requirements.txt
 ### External Dependencies
 
 Download and place in `code/external/` and `code/pretrained_models/`:
-- [FaceVerse v2 model](https://github.com/LizhenWangT/FaceVerse) → `external/FaceVerse/data/`
-- [PIRender checkpoint](https://1drv.ms/u/c/4c787027becb2e91/EclM8oNvDeBKgI4I2lO95zkBXbTgRxuyGerKJ_EhYBuEtA?e=40O0Wc) → `external/PIRender/cur_model_fold.pth`
-- [pretrained_models](https://1drv.ms/u/c/4c787027becb2e91/EZ_l_EhvDbFOnmA_n69F1z0BpSqZumEcevc-iC3wVOhqhA?e=FlqhFb) → extract to project root
+- **[pretrained_models](https://1drv.ms/u/c/4c787027becb2e91/EZ_l_EhvDbFOnmA_n69F1z0BpSqZumEcevc-iC3wVOhqhA?e=FlqhFb)** → extract to project root. **Required for evaluation** — the post-processor (EmotionVAE) checkpoint at `pretrained_models/post_processor/checkpoint.pth` is loaded on every `stage=test` run to length-align ground-truth sequences with predictions before computing metrics.
+- [FaceVerse v2 model](https://github.com/LizhenWangT/FaceVerse) → `external/FaceVerse/data/`. Needed only for FRREa rendering.
+- [PIRender checkpoint](https://1drv.ms/u/c/4c787027becb2e91/EclM8oNvDeBKgI4I2lO95zkBXbTgRxuyGerKJ_EhYBuEtA?e=40O0Wc) → `external/PIRender/cur_model_fold.pth`. Needed only for FRREa rendering.
 
 ### Model Checkpoints
 
@@ -131,33 +131,3 @@ python main.py \
 | S_MSE ↓ | Smoothness (MSE of consecutive frames) |
 | FRVar ↑ | Facial Reaction Variance |
 | FRREa ↓ | Facial Reaction Realism (FID on rendered frames) |
-
-## Citation
-
-Please cite the following papers:
-
-```bibtex
-@article{song2023multiple,
-  title={Multiple Appropriate Facial Reaction Generation in Dyadic Interaction Settings: What, Why and How?},
-  author={Song, Siyang and Spitale, Micol and Luo, Yiming and Bal, Batuhan and Gunes, Hatice},
-  journal={arXiv preprint arXiv:2302.06514},
-  year={2023}
-}
-
-@inproceedings{song2025react,
-  title={React 2025: the third multiple appropriate facial reaction generation challenge},
-  author={Song, Siyang and Spitale, Micol and Kong, Xiangyu and Zhu, Hengde and Luo, Cheng and Palmero, Cristina and Barquero, German and others},
-  booktitle={Proceedings of the 33rd ACM International Conference on Multimedia},
-  pages={13979--13984},
-  year={2025}
-}
-```
-
-## Acknowledgement
-
-- [FaceVerse](https://github.com/LizhenWangT/FaceVerse)
-- [PIRender](https://github.com/RenYurui/PIRender)
-
-## License
-
-See [LICENSE](code/LICENSE).

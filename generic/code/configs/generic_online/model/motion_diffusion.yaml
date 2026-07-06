@@ -1,6 +1,6 @@
 diff_model:
     model_name: LatentMLPMatcher
-    _target_: framework.motion_diffusion.diffusion.matchers.LatentMatcher
+    _target_: framework.motion_diffusion.diffusion.matchers_causal.CausalLatentMatcher
 
     eeg_head:
         enabled: True
@@ -99,6 +99,13 @@ diff_model:
             s_emotion_enc_drop_prob: 0.2
             past_l_emotion_drop_prob: 1.0
             use_past_frames: False
+            use_lag_bias: True
+            lag_max: 60
+            lag_lookahead: 0
+            use_coarse: True
+            coarse_classes: 8
+            coarse_hidden: 256
+            coarse_emo_start: 17
         scheduler:
             noise_schedule: cosine
             timestep_spacing: leading

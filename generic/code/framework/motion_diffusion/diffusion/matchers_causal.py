@@ -97,11 +97,13 @@ class CausalLatentMatcher(LatentMatcher):
         if not load_ckpt:
             return
         want_last = bool(resumed_training)
-        want_best = stage == "test"
+        # published generic checkpoints are named checkpoint_120.pth (not checkpoint_best.pth)
+        test_epoch = 120 if stage == "test" else None
+        want_best = False
 
         ckpt_path = self.get_ckpt_path(
             self.diffusion_decoder.model, runid="resume_runid",
-            epoch=None, best=want_best, last=want_last)
+            epoch=test_epoch, best=want_best, last=want_last)
         from_pretrained_checkpoint(str(ckpt_path), self.diffusion_decoder.model, device)
 
         if self.diffusion_prior is not None:

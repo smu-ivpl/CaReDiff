@@ -175,7 +175,7 @@ numbers.
 
 ### Personalised Offline
 
-| Condition | FRCorr ↑ | FRDist ↓ | FRDiv ↑ | FRVar ↑ | FRRea ↓ | FRSyn |
+| Condition | FRCorr ↑ | FRDist ↓ | FRDiv ↑ | FRVar ↑ | FRRea ↓ | FRSyn ↓ |
 |---|---|---|---|---|---|---|
 | personality | 0.7786 | 173.63 | 0.1221 | 0.0782 | 50.91 | 48.37 |
 | lhfb | 0.7824 | 173.11 | 0.1200 | 0.0766 | 51.23 | 48.26 |
@@ -183,7 +183,7 @@ numbers.
 
 ### Personalised Online
 
-| Condition | FRCorr ↑ | FRDist ↓ | FRDiv ↑ | FRVar ↑ | FRRea ↓ | FRSyn |
+| Condition | FRCorr ↑ | FRDist ↓ | FRDiv ↑ | FRVar ↑ | FRRea ↓ | FRSyn ↓ |
 |---|---|---|---|---|---|---|
 | personality | 0.6485 | 185.17 | 0.1521 | 0.0831 | 50.58 | 47.92 |
 | lhfb | 0.6481 | 191.88 | 0.1521 | 0.0828 | 50.89 | 47.92 |
@@ -201,4 +201,4 @@ FRRea is the FID between rendered generated frames and ground-truth frames
 | FRDiv ↑ | Diversity across the 10 generated predictions (pairwise MSE) |
 | FRVar ↑ | Temporal variance within a generated reaction |
 | FRRea ↓ | Realism (FID on rendered frames) |
-| FRSyn | Synchrony (Time-Lagged Cross-Correlation) |
+| FRSyn ↓ | Synchrony (Time-Lagged Cross-Correlation) |

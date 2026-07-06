@@ -1,0 +1,3 @@
+# checkpoint weights are hosted on Hugging Face, not in git (GitHub 100MB file limit)
+*.pth
+.omc/

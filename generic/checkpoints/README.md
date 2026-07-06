@@ -46,7 +46,7 @@ python main.py \
 
 # Generic Offline
 python main.py \
-    --config-name generic_offline/motion_transvae \
+    --config-name generic_offline/motion_diffusion \
     stage=test data_dir=./datasets/REACT2026/ \
     trainer.batch_size=1 resume_id=pretrained
 ```

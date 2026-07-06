@@ -1,0 +1,20 @@
+# Root-level top config for OFFLINE personalized (perfrdiff rewrite-weight) so it
+# composes at the global package (the in-tree personalized_*/ configs get packaged
+# under their subdir name when loaded via --config-name, which breaks overrides).
+# Non-invasive: originals untouched; this only re-hosts the same defaults at root.
+defaults:
+  - /personalized_offline/data/perfrdiff_rewrite_weight@data
+  - /personalized_offline/trainer/perfrdiff_rewrite_weight@trainer
+  - /shared/logger: none
+  - /shared/path@path
+  - _self_
+
+seed: 1234
+logger_level: INFO
+task: offline
+stage: ???
+data_dir: ???
+resume: false
+run_id: ${generate_id:}
+resume_id: ""
+num_gts: 10

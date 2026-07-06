@@ -1,0 +1,9 @@
+# Loss with the explicit coarse-to-fine cross-entropy term added.
+defaults:
+  - motion_diffusion
+  - _self_
+
+_target_: framework.utils.losses_causal.DiffusionLossCoarse
+w_coarse: 0.5          # weight of the coarse 8-class CE term
+coarse_emo_start: 17
+coarse_classes: 8

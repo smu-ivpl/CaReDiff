@@ -1,0 +1,20 @@
+# Causal / coarse-to-fine variant of the generic motion_diffusion model.
+# Inherits the full baseline model config and only swaps the matcher target
+# and adds the causal-decoder hyperparameters. Non-invasive: originals untouched.
+defaults:
+  - motion_diffusion
+  - _self_
+
+diff_model:
+  _target_: framework.motion_diffusion.diffusion.matchers_causal.CausalLatentMatcher
+  diffusion_decoder:
+    args:
+      # causal lead-lag cross-attention bias
+      use_lag_bias: True
+      lag_max: 60          # max past speaker offset with its own learned bias bucket
+      lag_lookahead: 0     # 0 = strict causal (no future speaker frames)
+      # coarse-to-fine 8-class facial-expression plan
+      use_coarse: True
+      coarse_classes: 8
+      coarse_hidden: 256
+      coarse_emo_start: 17  # emotion 25-d layout: [0:15]=AU, [15:17]=VA, [17:25]=8 expr

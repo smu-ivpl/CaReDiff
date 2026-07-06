@@ -1,0 +1,88 @@
+defaults:
+  - /personalized_offline/data/perfrdiff_rewrite_weight@data
+  - /personalized_offline/trainer/perfrdiff_rewrite_weight@trainer
+  - /shared/logger: none
+  - /shared/path@path
+  - _self_
+
+seed: 1234
+logger_level: INFO
+task: offline
+stage: ???
+data_dir: ???
+resume: false
+run_id: ${generate_id:}
+resume_id: ""
+num_gts: 10
+
+trainer:
+  _target_: trainer.g2p_delta.Trainer
+  model_name: g2p_delta
+  batch_size: 2
+  pretrained:
+    diffusion_decoder: pretrained_models/generic_offline_final_submission_model/CausalTransformerDenoiser/checkpoint_120.pth
+    diffusion_prior: pretrained_models/generic_offline_final_submission_model/DiffusionPriorNetwork/checkpoint_120.pth
+    modifier_checkpoint: ""
+    eeg_head_checkpoint: pretrained_models/generic_offline_final_submission_model/EEGPredictionHead/checkpoint_120.pth
+  model:
+    diff_model:
+      _target_: framework.motion_diffusion.diffusion.matchers_causal.CausalLatentMatcher
+      eeg_head:
+        enabled: true
+      diffusion_decoder:
+        args:
+          use_lag_bias: true
+          lag_max: 60
+          lag_lookahead: 0
+          use_coarse: true
+          coarse_classes: 8
+          coarse_hidden: 256
+          coarse_emo_start: 17
+  criterion:
+    args:
+      eeg_loss_weight: 0.25
+  generic:
+    epochs: 30
+    save_period: 5
+    val_period: 5
+    clip_grad: true
+    train_eeg: true
+    train_eeg_head_only: false
+    eval_eeg: true
+    num_workers: 8
+    num_preds: 1
+    max_train_batches: 0
+    max_val_batches: 0
+    # Short-triage control only: matched (default) | shuffled | identity.
+    # See trainer/g2p_delta.py::_apply_personalization and
+    # scripts/build_subset_eval_root.py. Never used during training.
+    eval_condition_mode: matched
+  main_model:
+    args:
+      personal_condition_mode: personality_only
+      embed_dim: 256
+      history_hidden_dim: 128
+      personality_hidden_dim: 128
+      condition_dropout: 0.1
+      delta_rank: 128
+      delta_max_scale: 0.15
+      personalize_coarse: true
+      anchor_weight: 0.001
+      coarse_weight: 0.5
+      ccc_weight: 0.1
+      dynamics_weight: 0.02
+      counterfactual_weight: 0.1
+      counterfactual_margin: 0.02
+      eeg_lr: 0.00001
+    optimizer_hypernet:
+      type: adamw
+      args:
+        lr: 0.0002
+        weight_decay: 0.0001
+        momentum: 0.0
+
+hydra:
+  run:
+    dir: outputs/${trainer.model_name}/${data.data_name}/${task}/${run_id}
+  job:
+    chdir: true

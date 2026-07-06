@@ -57,8 +57,8 @@ pip install -r <track>/code/requirements.txt
 ### External Dependencies
 
 - **[pretrained_models](https://1drv.ms/u/c/4c787027becb2e91/EZ_l_EhvDbFOnmA_n69F1z0BpSqZumEcevc-iC3wVOhqhA?e=FlqhFb)** → extract to project root. **Required for evaluation** — the post-processor (EmotionVAE) checkpoint at `pretrained_models/post_processor/checkpoint.pth` is loaded on every `stage=test` run to length-align ground-truth sequences with predictions before computing metrics.
-- [FaceVerse v2 model](https://github.com/LizhenWangT/FaceVerse) → `external/FaceVerse/data/`. Needed only for FRREa rendering.
-- [PIRender checkpoint](https://1drv.ms/u/c/4c787027becb2e91/EclM8oNvDeBKgI4I2lO95zkBXbTgRxuyGerKJ_EhYBuEtA?e=40O0Wc) → `external/PIRender/cur_model_fold.pth`. Needed only for FRREa rendering.
+- [FaceVerse v2 model](https://github.com/LizhenWangT/FaceVerse) → `external/FaceVerse/data/`. Needed only for FRRea rendering.
+- [PIRender checkpoint](https://1drv.ms/u/c/4c787027becb2e91/EclM8oNvDeBKgI4I2lO95zkBXbTgRxuyGerKJ_EhYBuEtA?e=40O0Wc) → `external/PIRender/cur_model_fold.pth`. Needed only for FRRea rendering.
 
 ### Data
 

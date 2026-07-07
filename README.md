@@ -1,6 +1,7 @@
 # CaReDiff
 
 **Causal Reaction Diffusion** — Submission for the [REACT 2026 Challenge](https://sites.google.com/view/react2026/home) (ACM MM 2026, MAFRG).
+<img width="2975" height="1613" alt="react_challenge_figure" src="https://github.com/user-attachments/assets/4e19a774-257d-430a-a3b5-73f5c9fc3975" />
 
 Given speaker behaviour (audio, video, 3DMM coefficients, facial attributes), CaReDiff generates multiple appropriate listener facial reactions (25-d: 15 AUs + valence/arousal + 8 expressions) with an auxiliary EEG prediction head.
 

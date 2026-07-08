@@ -315,7 +315,7 @@ class DecoderLatentMatcher(BaseLatentModel):
             "s_latent_embed_drop_prob": cfg.get("s_latent_embed_drop_prob", 0.2),
             "s_3dmm_enc_drop_prob": cfg.get("s_3dmm_enc_drop_prob", 0.2),
             "s_emotion_enc_drop_prob": cfg.get("s_emotion_enc_drop_prob", 1.0),
-            "past_l_emotion_drop_prob": cfg.get("past_l_emotion_drop_prob", 1.0),
+            "past_l_emotion_drop_prob": cfg.get("past_l_emotion_drop_prob", 0.2),
         }
         self.use_past_frames = cfg.get("use_past_frames", False)
 

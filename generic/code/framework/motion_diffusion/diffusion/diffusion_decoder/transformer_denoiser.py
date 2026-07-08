@@ -75,7 +75,7 @@ class TransformerDenoiser(nn.Module):
                  s_latent_embed_drop_prob: float = 0.2,  # speaker_latent_embed
                  s_3dmm_enc_drop_prob: float = 0.2,  # speaker_3dmm_encodings
                  s_emotion_enc_drop_prob: float = 1.0,  # speaker_emotion_encodings
-                 past_l_emotion_drop_prob: float = 1.0,  # past_listener_emotion
+                 past_l_emotion_drop_prob: float = 0.2,  # past_listener_emotion
                  **kwargs) -> None:
         super().__init__()
 

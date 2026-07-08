@@ -109,7 +109,7 @@ class CausalLatentMatcher(LatentMatcher):
         if self.diffusion_prior is not None:
             prior_ckpt_path = self.get_ckpt_path(
                 self.diffusion_prior.model, runid="resume_runid",
-                epoch=None, best=want_best, last=want_last, create_dir=False)
+                epoch=test_epoch, best=want_best, last=want_last, create_dir=False)
             if os.path.exists(prior_ckpt_path):
                 from_pretrained_checkpoint(str(prior_ckpt_path), self.diffusion_prior.model, device)
             elif resumed_training:
@@ -119,7 +119,7 @@ class CausalLatentMatcher(LatentMatcher):
         if self.eeg_head is not None:
             eeg_ckpt_path = self.get_ckpt_path(
                 self.eeg_head, runid="resume_runid",
-                epoch=None, best=want_best, last=want_last, create_dir=False)
+                epoch=test_epoch, best=want_best, last=want_last, create_dir=False)
             if os.path.exists(eeg_ckpt_path):
                 from_pretrained_checkpoint(str(eeg_ckpt_path), self.eeg_head, device)
             elif resumed_training:

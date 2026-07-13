@@ -28,7 +28,8 @@ python main.py \
     resume_id=pretrained \
     run_id=infer_generic_online \
     trainer.generic.eval_eeg=false \
-    trainer.model.diff_model.eeg_head.enabled=true
+    trainer.model.diff_model.eeg_head.enabled=true \
+    trainer.model.diff_model.diffusion_decoder.args.past_l_emotion_drop_prob=0.2
 
 echo "[inference] done. Predictions (results.pt) and metrics are in:"
 echo "  $ROOT/generic/code/outputs/motion_diffusion/react_2025/online/infer_generic_online/"
